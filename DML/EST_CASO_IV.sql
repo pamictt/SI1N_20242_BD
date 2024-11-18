@@ -1,0 +1,68 @@
+-- Inserindo dados na tabela ALUNOS
+INSERT INTO ALUNOS (NOME, CPF, DATA_NASCIMENTO, ENDERECO, EMAIL)
+VALUES 
+('Carlos Silva', '12345678901', '1995-06-15', 'Rua A, 100', 'carlos.silva@gmail.com'),
+('Ana Souza', '98765432100', '2000-01-20', 'Rua B, 200', 'ana.souza@gmail.com');
+
+-- Inserindo dados na tabela INSTRUTORES
+INSERT INTO INSTRUTORES (NOME, CPF, ESPECIALIDADE)
+VALUES 
+('João Pereira', '11122233344', 'Musculação'),
+('Mariana Lima', '55566677788', 'Yoga');
+
+-- Inserindo dados na tabela MODALIDADES
+INSERT INTO MODALIDADES (NOME)
+VALUES 
+('Musculação'),
+('Yoga'),
+('Pilates');
+
+-- Inserindo dados na tabela PLANOS_TREINAMENTO
+INSERT INTO PLANOS_TREINAMENTO (DATA_INICIO, DATA_FIM, ALUNO_ID, INSTRUTOR_ID)
+VALUES 
+('2024-11-01', '2025-01-01', 1, 1),
+('2024-11-05', '2025-02-05', 2, 2);
+
+-- Inserindo dados na tabela AULAS
+INSERT INTO AULAS (DATA_HORA, CAPACIDADE, MODALIDADE_ID, INSTRUTOR_ID)
+VALUES 
+('2024-11-10 09:00:00', 10, 1, 1),
+('2024-11-12 18:00:00', 15, 2, 2);
+
+-- Inserindo dados na tabela INSCRICOES_AULAS
+INSERT INTO INSCRICOES_AULAS (AULA_ID, ALUNO_ID)
+VALUES 
+(1, 1),
+(2, 2);
+
+-- Inserindo dados na tabela PAGAMENTOS
+INSERT INTO PAGAMENTOS (DATA, VALOR, STATUS, ALUNO_ID)
+VALUES 
+('2024-10-20', 200.00, 'PAGO', 1),
+('2024-10-25', 150.00, 'PENDENTE', 2);
+
+-- Inserindo dados na tabela MATRICULAS
+INSERT INTO MATRICULAS (DATA_MATRICULA, MODALIDADE_ID, ALUNO_ID)
+VALUES 
+('2024-10-15', 1, 1),
+('2024-10-20', 2, 2);
+
+-- Consultando alunos e suas matrículas
+SELECT ALUNOS.NOME AS Aluno, MODALIDADES.NOME AS Modalidade 
+FROM MATRICULAS 
+JOIN ALUNOS ON MATRICULAS.ALUNO_ID = ALUNOS.ID
+JOIN MODALIDADES ON MATRICULAS.MODALIDADE_ID = MODALIDADES.ID;
+
+-- Atualizando endereço de um aluno
+UPDATE ALUNOS 
+SET ENDERECO = 'Rua C, 300' 
+WHERE ID = 1;
+
+-- Deletando uma inscrição em aula
+DELETE FROM INSCRICOES_AULAS 
+WHERE AULA_ID = 1 AND ALUNO_ID = 1;
+
+-- Atualizando o status de um pagamento
+UPDATE PAGAMENTOS 
+SET STATUS = 'PAGO' 
+WHERE ID = 2;
