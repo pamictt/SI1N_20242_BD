@@ -1,0 +1,102 @@
+-- Inserindo dados na tabela TIPO_TELEFONE
+INSERT INTO TIPO_TELEFONE (NOME) 
+VALUES 
+('Residencial'),
+('Comercial'),
+('Celular');
+
+-- Inserindo dados na tabela CLIENTES
+INSERT INTO CLIENTES (CODIGO, CNPJ, RAZAO_SOCIAL, RAMO_ATIVIDADE, DATA_CADASTRAMENTO, PESSOA_CONTATO, EMAIL)
+VALUES 
+(1, '12.345.678/0001-99', 'Cliente A Ltda.', 'Comércio', '2024-10-01', 'João Silva', 'contato@clientea.com'),
+(2, '98.765.432/0001-55', 'Cliente B S/A', 'Serviços', '2024-10-15', 'Maria Oliveira', 'contato@clienteb.com');
+
+-- Inserindo dados na tabela EMPREGADOS
+INSERT INTO EMPREGADOS (MATRICULA, NOME, CARGO, SALARIO, DATA_ADMISSAO)
+VALUES 
+(1001, 'Pedro Santos', 'Analista de TI', 5500.00, '2024-05-10'),
+(1002, 'Ana Clara', 'Gerente Financeiro', 12000.00, '2023-03-01');
+
+-- Inserindo dados na tabela EMPRESAS
+INSERT INTO EMPRESAS (CNPJ, RAZAO_SOCIAL, ENDERECO_ID)
+VALUES 
+('55.555.555/0001-22', 'Empresa X Ltda.', 1),
+('66.666.666/0001-33', 'Empresa Y S/A', 2);
+
+-- Inserindo dados na tabela FORNECEDORES
+INSERT INTO FORNECEDORES (CNPJ, RAZAO_SOCIAL, ENDERECO_ID)
+VALUES 
+('77.777.777/0001-44', 'Fornecedor A', 3),
+('88.888.888/0001-55', 'Fornecedor B', 4);
+
+-- Inserindo dados na tabela ENDEREÇOS
+INSERT INTO ENDERECOS (ID, NUMERO, LOGRADOURO, COMPLEMENTO, CEP, BAIRRO, CIDADE, ESTADO, TIPO_ENDERECO_CODIGO)
+VALUES 
+(1, '123', 'Rua das Flores', 'Apto 101', '29000-000', 'Centro', 'Vitória', 'ES', 1),
+(2, '456', 'Avenida Brasil', 'Sala 205', '29100-000', 'Praia do Canto', 'Vitória', 'ES', 2);
+
+-- Inserindo dados na tabela TIPO_ENDERECO
+INSERT INTO TIPO_ENDERECO (CODIGO, NOME)
+VALUES 
+(1, 'Residencial'),
+(2, 'Comercial');
+
+-- Inserindo dados na tabela ENCOMENDAS
+INSERT INTO ENCOMENDAS (NUMERO, DATA_INCLUSAO, VALOR_TOTAL, VALOR_DESCONTO, VALOR_LIQUIDO, FORMA_PAGAMENTO_ID, QUANTIDADE_PARCELAS, CODIGO_CLIENTE)
+VALUES 
+(1, '2024-10-20', 5000.00, 500.00, 4500.00, 1, 5, 1),
+(2, '2024-10-25', 3000.00, 300.00, 2700.00, 2, 3, 2);
+
+-- Inserindo dados na tabela PRODUTOS
+INSERT INTO PRODUTOS (CODIGO, NOME, COR, DIMENSOES, PESO, PRECO, TEMPO_FABRICACAO, HORAS_MAO_OBRA)
+VALUES 
+(1, 'Produto A', 'Vermelho', '10x10x10', 1.5, 100.00, '02:00:00', 1.5),
+(2, 'Produto B', 'Azul', '20x20x20', 2.0, 200.00, '03:00:00', 2.0);
+
+-- Inserindo dados na tabela COMPONENTES
+INSERT INTO COMPONENTES (CODIGO, NOME, QUANTIDADE_ESTOQUE, PRECO_UNITARIO, UNIDADE, TIPO_COMPONENTE_CODIGO)
+VALUES 
+(1, 'Componente A', 100, 10.00, 'Unidade', 1),
+(2, 'Componente B', 200, 15.00, 'Unidade', 2);
+
+-- Inserindo dados na tabela TIPOS_COMPONENTE
+INSERT INTO TIPOS_COMPONENTE (CODIGO, NOME)
+VALUES 
+(1, 'Eletrônico'),
+(2, 'Mecânico');
+
+-- Inserindo dados na tabela FORNECEDORES_COMPONENTES
+INSERT INTO FORNECEDORES_COMPONENTES (CODIGO_FORNECEDOR, CODIGO_COMPONENTE)
+VALUES 
+('77.777.777/0001-44', 1),
+('88.888.888/0001-55', 2);
+
+-- Inserindo dados na tabela MAQUINAS
+INSERT INTO MAQUINAS (TEMPO_VIDA, DATA_COMPRA, DATA_FIM_GARANTIA)
+VALUES 
+(10, '2020-01-01', '2025-01-01'),
+(8, '2022-06-15', '2027-06-15');
+
+-- Inserindo dados na tabela REGISTRO_MANUTENCAO
+INSERT INTO REGISTRO_MANUTENCAO (DATA, DESCRICAO, MAQUINA_ID)
+VALUES 
+('2024-09-01', 'Troca de peças', 1),
+('2024-10-01', 'Lubrificação geral', 2);
+
+-- Inserindo dados na tabela REGISTRO_SUPRIMENTOS
+INSERT INTO REGISTRO_SUPRIMENTOS (QUANTIDADE, DATA_NECESSIDADE, COMPONENTE_ID)
+VALUES 
+(50, '2024-12-01', 1),
+(30, '2024-11-15', 2);
+
+-- Consultando produtos e seus preços
+SELECT NOME, PRECO FROM PRODUTOS;
+
+-- Atualizando o salário de um empregado
+UPDATE EMPREGADOS 
+SET SALARIO = 6000.00 
+WHERE MATRICULA = 1001;
+
+-- Deletando uma encomenda
+DELETE FROM ENCOMENDAS 
+WHERE NUMERO = 1;
